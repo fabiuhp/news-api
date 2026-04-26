@@ -1,20 +1,25 @@
 package response
 
 type NewsClientResponse struct {
-	Status       string
-	TotalResults string
-	Articles     []ArticleResponse
+	Status       string            `json:"status"`
+	TotalResults int               `json:"totalResults"`
+	Articles     []ArticleResponse `json:"articles"`
 }
 
 type ArticleResponse struct {
-	Source      string
-	Id          string
-	Name        string
-	Author      string
-	Title       string
-	Description string
-	Url         string
-	PublishedAt string
-	UrlToImage  string
-	Content     string
+	Source      SourceResponse `json:"source"`
+	Id          string         `json:"id"`
+	Name        string         `json:"name"`
+	Author      string         `json:"author"`
+	Title       string         `json:"title"`
+	Description string         `json:"description"`
+	Url         string         `json:"url"`
+	PublishedAt string         `json:"publishedAt"`
+	UrlToImage  string         `json:"urlToImage"`
+	Content     string         `json:"content"`
+}
+
+type SourceResponse struct {
+	Id   *string `json:"id"`
+	Name string  `json:"name"`
 }

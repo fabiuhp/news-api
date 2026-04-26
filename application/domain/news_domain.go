@@ -6,20 +6,20 @@ type NewsReqDomain struct {
 }
 
 type NewsDomain struct {
-	Status       string
-	TotalResults string
-	Articles     []Article
+	Status       string    `json:"status"`
+	TotalResults int       `json:"totalResults"`
+	Articles     []Article `json:"articles"`
 }
 
 type Article struct {
-	Source      string
-	Id          string
-	Name        string
-	Author      string
-	Title       string
-	Description string
-	Url         string
-	PublishedAt string
-	UrlToImage  string
-	Content     string
+	Source      string `json:"source"`
+	Id          string `json:"id"`
+	Name        string `json:"name"`
+	Author      string `json:"author"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Url         string `json:"url"`
+	PublishedAt string `json:"publishedAt"`
+	UrlToImage  string `json:"urlToImage"`
+	Content     string `json:"content"`
 }

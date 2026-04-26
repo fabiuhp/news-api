@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"net/http"
 	"news-api/adapter/input/model/request"
 	"news-api/application/domain"
 	"news-api/application/port/input"
@@ -34,10 +35,14 @@ func (nc *newsController) GetNews(c *gin.Context) {
 
 	newsDomain := domain.NewsReqDomain{
 		Query: request.Query,
-		From:  request.From,
+		From:  request.From.Format("2006-01-02"),
 	}
 
-	_, _ = nc.newsUseCase.GetNews(newsDomain)
+	newsResponseDomain, err := nc.newsUseCase.GetNews(newsDomain)
+	if err != nil {
+		c.JSON(err.Code, err)
+		return
+	}
 
-	c.JSON(200, newsDomain)
+	c.JSON(http.StatusOK, newsResponseDomain)
 }

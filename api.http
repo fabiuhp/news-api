@@ -1,0 +1,1 @@
+GET http://localhost:8000/news?q=ariquemes&from=2023-09-01
